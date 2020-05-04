@@ -1,8 +1,9 @@
 
-GET http://localhost:3001/api/persons
-# Content-Type:application/json
+POST http://localhost:3001/api/persons
+Content-Type:application/json
 
-# {
-#     "name":"Dad",
-#     "number":"987698765"
-# }
+{
+    "name":"dad",
+    "number":"9876987659",
+    "id":"5eb01687483851371cb0e67a"
+}

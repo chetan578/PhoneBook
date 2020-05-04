@@ -6,8 +6,8 @@ require('dotenv').config
 const Person = require('./modules/persons')
 mongoose.set('useFindAndModify', false)
 
-app.use(cors())
 app.use(express.static('build'))
+app.use(cors())
 app.use(express.json())
 
 
@@ -69,6 +69,7 @@ app.post('/api/persons',(req,res)=>{
     })
     person.save().then(savedPerson=>{
       res.json(savedPerson.toJSON())
+      .catch(error=>next(error))
     })
 })
 
@@ -87,7 +88,7 @@ const errorHandler=(error,req,res,next)=>{
   return res.status(400).send({'error':'malformatted id'})
   else if (error.name === 'ValidationError') 
   return response.status(400).json({ error: error.message })
-  
+
   next(error)
 }
 //handles results related to errors 
